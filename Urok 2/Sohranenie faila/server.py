@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect
 from loginform import LoginForm
 from my_configure import my_configure
 
@@ -12,17 +12,12 @@ def index():
     return render_template('index.html', title='Домашняя страница', username=user)
 
 
-@app.route('/form_sample', methods=['GET', 'POST'])
+@app.route('/file_sample', methods=['GET', 'POST'])
 def form():
+    global pic
     form = LoginForm()
     if form.validate_on_submit():
-        print(request.form['username_first'])
-        print(request.form['real_name'])
-        print(request.form['password'])
-        print(request.form['sex'])
-        print(request.form['commentary'])
-        print(request.form['language'])
-        print(request.form['remember_me'])
+        pic = form.file_load.data
         return redirect('/success')
     return render_template('login.html', title='Форма', form=form)
 
@@ -33,5 +28,7 @@ def success():
 
  
 if __name__ == '__main__':
+    pic = None
     my_configure(app)
     app.run(port=8080, host='127.0.0.1')
+    
