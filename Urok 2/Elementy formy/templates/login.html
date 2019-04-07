@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Форма</h1>
+	<form action='' method="post" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.real_name.label }}<br>
+			{{ form.real_name }}
+			{% for error in form.real_name.errors %}
+				<div class="alert alert-danger" role="alert">
+					{{ error }} 
+				</div>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.username_first.label }}<br>
+			{{ form.username_first }}
+			{% for error in form.username_first.errors %}
+				<div class="alert alert-danger" role="alert">
+					{{ error }} 
+				</div>
+			{% endfor %}
+		</p>
+		<p>
+            {{ form.password.label }}<br>
+            {{ form.password }}<br>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+		<p>
+			{{ form.sex.label }}<br>
+			{{ form.sex }}
+			{% for error in form.sex.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+		</p>
+		<p>
+			{{ form.commentary.label }}<br>
+            {{ form.commentary }}
+		<p>
+			{{ form.language.label }}<br>
+			{{ form.language }}
+			{% for error in form.language.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+		</p>
+		<p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+		<p>{{ form.submit() }}</p>
+    </form>
+	
+{% endblock %}
