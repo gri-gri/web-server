@@ -3,14 +3,10 @@ from flask import Flask, url_for
 app = Flask(__name__)
 
 
-@app.route('/index')
+@app.route('/')
 def index():
     return "Привет, Яндекс!"
 
-@app.route('/image_sample')
-def image():
-    return '''<img src="{}" alt="здесь должна была быть картинка, 
-    но не нашлась">'''.format(url_for('static', filename='img/Риана.jpg'))
 
 @app.route('/bootstrap_sample')
 def bootstrap():
